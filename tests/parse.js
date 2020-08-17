@@ -14,6 +14,11 @@ unified()
   .use(markdown)
   .use(remark2rehype)
   .use(sanitize)
+  .use(anthor, {
+    done(anthors) {
+      console.log(anthors)
+    }
+  })
   // .use(doc, {title: ''})
   .use(format)
   .use(html)
