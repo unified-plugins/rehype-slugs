@@ -1,8 +1,8 @@
 var util = require('./lib');
 
-module.exports = anchor;
+module.exports = slugs;
 
-function anchor(options) {
+function slugs(options) {
   var settings = options || {};
   var depth = settings.maxDepth || 6;
   var skip = settings.skip;

@@ -31,10 +31,10 @@ declare namespace rehypeSlug {
      * For example, this would allow headings under either `root` or `blockquote` to be used:
      *
      * ```ts
-     * anchor(tree, {parents: ['root', 'blockquote']})
+     * slugs(tree, {parents: ['root', 'blockquote']})
      * ```
      *
-     * @default the to `anchor` given `tree`, to only allow top-level headings
+     * @default the to `slugs` given `tree`, to only allow top-level headings
      */
     parents?: Test<Node> | Array<Test<Node>>;
   }

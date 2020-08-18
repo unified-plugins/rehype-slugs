@@ -25,14 +25,17 @@
     "index.js"
   ],
   "scripts": {
-    "build-bundle": "browserify . -s mdastUtilTOC > mdast-util-toc.js",
-    "build-mangle": "browserify . -s mdastUtilTOC -p tinyify > mdast-util-toc.min.js",
+    "build-bundle": "browserify . -s rehypeSlugs > rehype-slugs.js",
+    "build-mangle": "browserify . -s rehypeSlugs -p tinyify > rehype-slugs.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-types": "dtslint types",
-    "test": "node ./tests/run.js"
+    "test-md": "node ./tests/run-md.js",
+    "test-html": "node ./tests/run-html.js"
   },
   "dependencies": {
+    "browserify": "^16.5.2",
     "crypto-random-string": "^3.2.0",
+    "deepmerge": "^4.2.2",
     "dtslint": "^3.6.14",
     "extend": "^3.0.2",
     "github-slugger": "^1.3.0",
@@ -45,9 +48,11 @@
     "rehype-document": "^5.1.0",
     "rehype-format": "^3.1.0",
     "rehype-parse": "^7.0.1",
+    "rehype-sanitize": "^3.0.1",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^8.0.3",
     "remark-rehype": "^7.0.0",
+    "tinyify": "^3.0.0",
     "typescript": "^3.9.7",
     "unified": "^9.1.0",
     "unist-builder": "^2.0.3",

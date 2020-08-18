@@ -1,50 +1,63 @@
-```js
-const vfile = require('to-vfile');
-const anchor = require('mdast-util-anchor');
-const remark = require('remark');
+## Installation
 
-const a = anchor(vfile.readSync('example.md'));
+```bash
+npm install unified
+yarn unified
+```
+
+## Usage
+
+example.md looks as follows:
+
+```md
+## [Hello](./example.md) World
+
+Hello World
+
+### Hello `World`
+
+Hello World
+
+## Hello <a href="./example.md">World</a>
+
+Hello World
+```
+
+and example.js like this:
+
+```js
+var vfile = require('to-vfile');
+var slugs = require('rehype-slugs');
+var remark = require('remark');
+var remark2rehype = require('remark-rehype');
+
+var result;
 remark()
-  .use(a.plugin)
+  .use(slugs, {
+    maxDepth: 3,
+    callback: function (res) {
+      result = res;
+    },
+  })
   .process(vfile.readSync('example.md'), function (err, file) {
     if (err) throw err;
+    console.log(slugs);
     console.log(String(file));
   });
 ```
 
-## Hypertext Abstract Syntax Tree format
+Now, running `node example` yields:
 
-https://github.com/syntax-tree/hast
-
-## Security
-
-https://www.npmjs.com/package/hast-util-sanitize
-
-https://github.com/rehypejs/rehype-sanitize
-
-## An interface for processing text using syntax trees
-
-https://www.npmjs.com/package/unified
-https://unifiedjs.com/learn/recipe/tree-traversal/
-
-## Markdown processor
-
-https://github.com/remarkjs/remark
-
-## Utility to create a new trees with a nice syntax
-
-https://github.com/syntax-tree/unist-builder
-
-## 类似 Koa 剥洋葱的中间件调用实现
-
-https://github.com/wooorm/trough
-
-## 打包模块
-
-https://www.npmjs.com/package/browserify
-
-## 改造自
-
-https://github.com/syntax-tree/mdast-util-toc/blob/main/readme.md
-
-https://www.npmjs.com/package/remark-toc
+```
+[
+  { id: '33bea', depth: 1, tagName: 'h2', text: 'Hello World' },
+  { id: '1a67a', depth: 2, tagName: 'h3', text: 'Hello World' },
+  { id: '50eb7', depth: 1, tagName: 'h2', text: 'Hello World' }
+]
+<h2 id="33bea"><a href="./heading.md">Hello</a> World</h2>
+<p>Hello World</p>
+<h3 id="1a67a">Hello <code>World</code></h3>
+<p>Hello World</p>
+<h2 id="50eb7">Hello World</h2>
+<p>Hello World</p>
+```
