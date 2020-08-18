@@ -1,12 +1,12 @@
 ```js
-const vfile = require("to-vfile");
-const anchor = require("mdast-util-anchor");
-const remark = require("remark");
+const vfile = require('to-vfile');
+const anchor = require('mdast-util-anchor');
+const remark = require('remark');
 
-const a = anchor(vfile.readSync("example.md"));
+const a = anchor(vfile.readSync('example.md'));
 remark()
   .use(a.plugin)
-  .process(vfile.readSync("example.md"), function (err, file) {
+  .process(vfile.readSync('example.md'), function (err, file) {
     if (err) throw err;
     console.log(String(file));
   });

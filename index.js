@@ -1,21 +1,20 @@
-var util = require('./lib')
+var util = require('./lib');
 
-module.exports = anchor
+module.exports = anchor;
 
 function anchor(options) {
-  var settings = options || {}
-  var depth = settings.maxDepth || 6
-  var tight = settings.tight
-  var skip = settings.skip
+  var settings = options || {};
+  var depth = settings.maxDepth || 6;
+  var skip = settings.skip;
+  var callback = settings.callback;
 
-  return transformer
+  return transformer;
 
   function transformer(node) {
     util(node, {
       maxDepth: depth,
-      tight: tight,
-      skip: skip
-    })
-    util.map
+      skip: skip,
+      callback: callback,
+    });
   }
 }
