@@ -1,3 +1,7 @@
+# rehype-slugs
+
+rehype plugin to add ids to headings and output.
+
 ## Installation
 
 ```bash
@@ -7,7 +11,7 @@ yarn unified
 
 ## Usage
 
-example.md looks as follows:
+`example.md` looks as follows:
 
 ```md
 ## [Hello](./example.md) World
@@ -23,7 +27,7 @@ Hello World
 Hello World
 ```
 
-and example.js like this:
+and `example.js` like this:
 
 ```js
 var vfile = require('to-vfile');
@@ -33,6 +37,7 @@ var remark2rehype = require('remark-rehype');
 
 var result;
 remark()
+  .use(remark2rehype)
   .use(slugs, {
     maxDepth: 3,
     callback: function (res) {
@@ -46,7 +51,7 @@ remark()
   });
 ```
 
-Now, running `node example` yields:
+Now, running `node example.js` yields:
 
 ```
 [
