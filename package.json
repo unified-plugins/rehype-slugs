@@ -1,6 +1,6 @@
 {
   "name": "rehype-slugs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -30,7 +30,9 @@
     "build": "npm run build-bundle && npm run build-mangle",
     "test-types": "dtslint types",
     "test-md": "node ./tests/run-md.js",
-    "test-html": "node ./tests/run-html.js"
+    "test-html": "node ./tests/run-html.js",
+    "debug-md": "node --inspect-brk ./tests/run-md.js",
+    "debug-html": "node --inspect-brk ./tests/run-html.js"
   },
   "dependencies": {
     "crypto-random-string": "^3.2.0",

@@ -12,11 +12,14 @@ var format = require('rehype-format');
 var html = require('rehype-stringify');
 var report = require('vfile-reporter');
 
+const schema = merge(gh, { clobberPrefix: 'slug-' });
+
 var result;
 unified()
   .use(markdown)
   .use(remark2rehype)
   .use(slugs, {
+    prefix: 'slug-',
     maxDepth: 3,
     callback: function (res) {
       result = res;
@@ -24,7 +27,7 @@ unified()
   })
   // .use(doc, {title: ''})
   .use(format)
-  .use(sanitize, gh)
+  .use(sanitize, schema)
   .use(html)
   .process(fs.readFileSync(path.resolve(__dirname, './example.md')), function (
     err,
