@@ -7,6 +7,7 @@ import { Test } from 'unist-util-is';
 declare namespace rehypeSlug {
   type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   interface SlugOptions {
+    prefix?: string;
     /**
      * Maximum heading depth to include in the table of contents,
      * This is inclusive: when set to `3`,
