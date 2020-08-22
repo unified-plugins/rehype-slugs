@@ -5,8 +5,8 @@ rehype plugin to add ids to headings and output.
 ## Installation
 
 ```bash
-npm install unified
-yarn unified
+npm install rehype-slugs
+yarn rehype-slugs
 ```
 
 ## Usage
