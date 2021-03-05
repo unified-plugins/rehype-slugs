@@ -1,6 +1,6 @@
 {
   "name": "rehype-slugs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -15,8 +15,8 @@
     "slugs",
     "anchor"
   ],
-  "repository": "tingyur/rehype-slugs",
-  "bugs": "https://github.com/tingyur/rehype-slugs/issues",
+  "repository": "unified-plugins/rehype-slugs",
+  "bugs": "https://github.com/unified-plugins/rehype-slugs/issues",
   "author": "Zhenyu Zhu <1214327383@qq.com>",
   "types": "types/index.d.ts",
   "files": [
